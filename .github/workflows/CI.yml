@@ -50,7 +50,7 @@ jobs:
           python-version: 3.8
 
       - name: Install Dependencies
-        run:  pip install numpy scikit-learn joblib  # Ensure these are installed 
+        run:  pip install numpy scikit-learn joblib pytest  # Ensure these are installed 
              
 
       - name: Run Tests
