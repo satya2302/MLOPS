@@ -31,3 +31,4 @@ if __name__ == "__main__":
     example_features = [5.1, 3.5, 1.4, 0.2]
     prediction = predict_iris(example_features)
     print(f"The predicted class for the given features {example_features} is: {prediction}")
+
