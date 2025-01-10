@@ -1,6 +1,15 @@
 import numpy as np
 import joblib
 from sklearn.datasets import load_iris
+import warnings
+
+
+# Suppress version mismatch warnings
+warnings.filterwarnings(
+    "ignore",
+    message="Trying to unpickle estimator",
+    category=UserWarning,
+)
 
 # Load the iris dataset for class names
 data = load_iris()
