@@ -21,7 +21,7 @@ def test_model_prediction(example_features):
     """Test model prediction for example features."""
     prediction = loaded_model.predict(example_features)
     predicted_class = data.target_names[prediction[0]]
-    
+
     # Validate prediction
     assert predicted_class in ["setosa", "versicolor", "virginica"], \
         f"Unexpected prediction: {predicted_class}"
