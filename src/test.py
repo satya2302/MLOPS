@@ -1,5 +1,3 @@
-# test.py
-import pytest
 import numpy as np
 import joblib
 from sklearn.datasets import load_iris
@@ -15,5 +13,10 @@ if __name__ == "__main__":
     example_features = [5.1, 3.5, 1.4, 0.2]
     example_features = np.array(example_features).reshape(1, -1)
     prediction = loaded_model.predict(example_features)
-    assert data.target_names[prediction[0]] in ["setosa", "versicolor", "virginica"]
-    print(f"The predicted is: {data.target_names[prediction[0]]}")
+    predicted_class = data.target_names[prediction[0]]
+    
+    # Validate prediction
+    assert predicted_class in ["setosa", "versicolor", "virginica"], \
+        f"Unexpected prediction: {predicted_class}"
+    
+    print(f"The predicted is: {predicted_class}")
