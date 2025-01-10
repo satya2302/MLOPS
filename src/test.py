@@ -1,4 +1,5 @@
 # test.py
+import pytest
 import numpy as np
 import joblib
 from sklearn.datasets import load_iris
