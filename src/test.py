@@ -14,9 +14,9 @@ if __name__ == "__main__":
     example_features = np.array(example_features).reshape(1, -1)
     prediction = loaded_model.predict(example_features)
     predicted_class = data.target_names[prediction[0]]
-    
+
     # Validate prediction
     assert predicted_class in ["setosa", "versicolor", "virginica"], \
         f"Unexpected prediction: {predicted_class}"
-    
+
     print(f"The predicted is: {predicted_class}")
