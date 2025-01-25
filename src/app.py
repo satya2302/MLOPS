@@ -21,18 +21,17 @@ def predict():
         data = request.json
         features = np.array(data['features']).reshape(1, -1)
         # Reshape to match input format
-        
+
         # Make prediction
         prediction = model.predict(features)
-        
+
         # Return the prediction as a JSON response
         return jsonify({"prediction": int(prediction[0])})
-    
+
     except Exception as e:
         return jsonify({"error": str(e)}), 400
 
+
 if __name__ == '__main__':
     # Run the Flask app
-    app.run(debug=True,host='0.0.0.0')
-
-    
+    app.run(debug=True, host='0.0.0.0')

@@ -54,15 +54,15 @@ mlflow.set_experiment("Random Forest Experiment")
 
 with mlflow.start_run():
     mlflow.log_params({
-        "param_grid": str(param_grid),           
+        "param_grid": str(param_grid),
         # Document the grid search space
         "best_n_estimators": best_params["n_estimators"],
         # Best value for n_estimators
-        "best_max_depth": best_params["max_depth"],     
+        "best_max_depth": best_params["max_depth"],
         # Best value for max_depth
         "best_min_samples_split": best_params["min_samples_split"],
         # Best value for min_samples_split
-        "best_min_samples_leaf": best_params["min_samples_leaf"]  
+        "best_min_samples_leaf": best_params["min_samples_leaf"]
         # Best value for min_samples_leaf
     })
     mlflow.log_metric("mse", mse)
@@ -70,4 +70,4 @@ with mlflow.start_run():
 
     # Log the model with input_example for auto-inferencing the signature
     mlflow.sklearn.log_model(best_model, "model_optimized",
-                              input_example=input_example)
+                             input_example=input_example)
