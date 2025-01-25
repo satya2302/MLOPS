@@ -13,8 +13,6 @@ model = joblib.load('iris_model.joblib')
 
 
 @app.route('/predict', methods=['POST'])
-
-
 def predict():
     try:
         # Get the features from the POST request
