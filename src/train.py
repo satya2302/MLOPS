@@ -25,7 +25,7 @@ param_grid = {
 
 # Set up the GridSearchCV
 grid_search = GridSearchCV(
-    RandomForestClassifier(random_state=42), param_grid, 
+    RandomForestClassifier(random_state=42), param_grid,
     cv=5, scoring="accuracy", n_jobs=-1
 )
 
@@ -45,7 +45,7 @@ mse = mean_squared_error(y_test, y_pred)
 r2 = r2_score(y_test, y_pred)
 
 # Create an input example
-input_example = X_test[0].reshape(1, -1)   
+input_example = X_test[0].reshape(1, -1)
 # Taking the first sample from X_test
 
 
@@ -54,19 +54,20 @@ mlflow.set_experiment("Random Forest Experiment")
 
 with mlflow.start_run():
     mlflow.log_params({
-        "param_grid": str(param_grid),            
+        "param_grid": str(param_grid),           
         # Document the grid search space
-        "best_n_estimators": best_params["n_estimators"], 
+        "best_n_estimators": best_params["n_estimators"],
         # Best value for n_estimators
-        "best_max_depth": best_params["max_depth"],        
+        "best_max_depth": best_params["max_depth"],     
         # Best value for max_depth
-        "best_min_samples_split": best_params["min_samples_split"],  
+        "best_min_samples_split": best_params["min_samples_split"],
         # Best value for min_samples_split
-        "best_min_samples_leaf": best_params["min_samples_leaf"]     
+        "best_min_samples_leaf": best_params["min_samples_leaf"]  
         # Best value for min_samples_leaf
     })
     mlflow.log_metric("mse", mse)
     mlflow.log_metric("r2", r2)
 
     # Log the model with input_example for auto-inferencing the signature
-    mlflow.sklearn.log_model(best_model, "model_optimized", input_example=input_example)
+    mlflow.sklearn.log_model(best_model, "model_optimized",
+                              input_example=input_example)

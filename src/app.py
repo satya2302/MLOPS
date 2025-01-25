@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import mlflow
 import joblib
 import numpy as np
 
@@ -12,6 +11,7 @@ app = Flask(__name__)
 # ("mlruns/572425099079902757/5bc902453bba4db8ad936ab04a6b3119/artifacts/model_optimized")
 model = joblib.load('iris_model.joblib')
 
+
 @app.route('/predict', methods=['POST'])
 
 
@@ -19,7 +19,7 @@ def predict():
     try:
         # Get the features from the POST request
         data = request.json
-        features = np.array(data['features']).reshape(1, -1)  
+        features = np.array(data['features']).reshape(1, -1)
         # Reshape to match input format
         
         # Make prediction
@@ -34,3 +34,5 @@ def predict():
 if __name__ == '__main__':
     # Run the Flask app
     app.run(debug=True,host='0.0.0.0')
+
+    
